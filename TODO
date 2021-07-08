@@ -1,0 +1,7 @@
+TODO List:
+  ☐ パッケージマネージャーを選択出来るようにする
+  ☐ プリセットの更新を容易に出来るようにする（mkpj-presets みたいなリポジトリ上のJSONで管理したい）
+  ☐ MongoDB + Jestに対応させる
+  ☐ Badge関連
+  ☐ docker compose に対応させる
+  ☐ husky + lint-staged

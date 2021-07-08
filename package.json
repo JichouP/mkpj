@@ -1,0 +1,81 @@
+{
+  "name": "mkpj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/bin.js",
+  "bin": {
+    "mkpj": "dist/bin.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "run": "pnpx mkpj",
+    "build": "gulp build",
+    "link": "pnpm link --global",
+    "unlink": "pnpm rm -g mkpj",
+    "lint": "eslint src",
+    "test": "jest --color",
+    "test:coverage": "jest --collectCoverage --color",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JichouP/mkpj.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "JichouP",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JichouP/mkpj/issues"
+  },
+  "homepage": "https://github.com/JichouP/mkpj#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "esbuild": "^0.12.15",
+    "inquirer": "^8.1.1",
+    "zod": "^3.3.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/fs-extra": "^9.0.11",
+    "@types/gulp": "^4.0.8",
+    "@types/inquirer": "^7.3.2",
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "babel-jest": "^27.0.6",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "fs-extra": "^10.0.0",
+    "gulp": "^4.0.2",
+    "husky": "^7.0.0",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "lint-staged": {
+    "*.{md,html,css}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
+}
