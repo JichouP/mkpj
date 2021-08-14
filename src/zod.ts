@@ -10,13 +10,20 @@ export const promptValidator = z.object({
   ]),
   mongo: z.union([z.boolean(), z.undefined()]),
   bundler: z.union([
+    z.literal(false),
     z.literal('webpack'),
     z.literal('esbuild'),
-    z.literal('parcel'),
-    z.null(),
+    z.literal('ts-node'),
   ]),
-  linter: z.union([z.literal('eslint'), z.null()]),
-  formatter: z.union([z.literal('prettier'), z.null()]),
-  'git-hooks': z.union([z.literal('husky'), z.null()]),
-  test: z.union([z.literal('jest'), z.null()]),
+  eslint: z.union([
+    z.literal(false),
+    z.literal('eslint:recommended'),
+    z.literal('airbnb'),
+    z.literal('airbnb-base'),
+  ]),
+  prettier: z.boolean(),
+  husky: z.boolean(),
+  test: z.boolean(),
 });
+
+export type PromptResult = z.infer<typeof promptValidator>;

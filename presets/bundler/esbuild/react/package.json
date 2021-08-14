@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "watch": "node watch.js",
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "esbuild": "*",
+    "fs-extra": "*"
+  }
+}

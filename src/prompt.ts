@@ -34,59 +34,67 @@ export const prompt = () =>
     },
     {
       name: 'bundler',
-      type: 'select',
+      type: 'toggle',
+      message: 'Use Module Bundler?',
+      initial: true,
+      active: 'Yes',
+      inactive: 'No',
+    },
+    {
+      name: 'bundler',
+      type: (prev) => (prev ? 'select' : false),
       message: 'Choose a module bundler',
+      choices: (_, values) => {
+        const choices = [
+          { title: 'Webpack', value: 'webpack' },
+          { title: 'ESBuild', value: 'esbuild' },
+        ];
+        if (['node', 'express'].includes(values.preset)) {
+          choices.push({ title: 'ts-node', value: 'ts-node' });
+        }
+        return choices;
+      },
+    },
+    {
+      name: 'eslint',
+      type: 'toggle',
+      message: 'Use ESLint?',
+      initial: true,
+      active: 'Yes',
+      inactive: 'No',
+    },
+    {
+      name: 'eslint',
+      type: (prev) => (prev ? 'select' : false),
+      message: 'Choose a ESLint preset',
       choices: [
-        { title: 'Webpack', value: 'webpack' },
-        { title: 'ESBuild', value: 'esbuild' },
-        { title: 'Parcel', value: 'parcel' },
-        { title: 'None', value: null },
+        { title: 'eslint:recommended', value: 'eslint:recommended' },
+        { title: 'airbnb (with React)', value: 'airbnb' },
+        { title: 'airbnb-base (without React)', value: 'airbnb-base' },
       ],
     },
     {
-      name: 'linter',
-      type: 'select',
-      message: 'Choose a linter',
-      choices: [
-        { title: 'ESLint', value: 'eslint' },
-        { title: 'None', value: null },
-      ],
+      name: 'prettier',
+      type: 'toggle',
+      message: 'Use Prettier?',
+      initial: true,
+      active: 'Yes',
+      inactive: 'No',
     },
     {
-      name: 'formatter',
-      type: 'select',
-      message: 'Choose a formatter',
-      choices: [
-        { title: 'Prettier', value: 'prettier' },
-        { title: 'None', value: null },
-      ],
-    },
-    {
-      name: 'git-hooks',
-      type: 'select',
-      message: 'Choose a git-hooks',
-      choices: [
-        { title: 'husky', value: 'husky' },
-        { title: 'None', value: null },
-      ],
+      name: 'husky',
+      type: 'toggle',
+      message: 'Use husky?',
+      initial: true,
+      active: 'Yes',
+      inactive: 'No',
     },
     {
       name: 'test',
-      type: 'select',
-      message: 'Choose a test tool',
-      choices: [
-        { title: 'jest', value: 'jest' },
-        { title: 'None', value: null },
-      ],
+      type: 'toggle',
+      message: 'Use Jest?',
+      initial: true,
+      active: 'Yes',
+      inactive: 'No',
     },
   ]);
-
-/*
-npm
-typescript
-webpack
-git-hooks
-prettier
-eslint
-jest
-*/
