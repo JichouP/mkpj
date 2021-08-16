@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "prepare": "husky install"
+  },
   "lint-staged": {
     "*.{md,html,css}": [
       "prettier --write"
@@ -7,5 +10,9 @@
       "prettier --write",
       "eslint --fix"
     ]
+  },
+  "devDependencies": {
+    "husky": "0.0.0",
+    "lint-staged": "0.0.0"
   }
 }

@@ -25,6 +25,14 @@ export const prompt = () =>
       ],
     },
     {
+      name: 'react',
+      type: (prev) => prev === 'electron' && 'toggle',
+      message: 'Use React?',
+      initial: true,
+      active: 'Yes',
+      inactive: 'No',
+    },
+    {
       name: 'mongo',
       type: (prev) => prev === 'express' && 'toggle',
       message: 'Use MongoDB?',

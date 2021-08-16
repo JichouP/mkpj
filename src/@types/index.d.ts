@@ -15,7 +15,6 @@ declare namespace Mkpj {
     | 'webpack'
     | 'prettier'
     | 'husky'
-    | 'lint-staged'
     | 'eslint'
     | 'electron'
     | 'express'

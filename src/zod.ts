@@ -8,6 +8,7 @@ export const promptValidator = z.object({
     z.literal('express'),
     z.literal('electron'),
   ]),
+  react: z.union([z.boolean(), z.undefined()]),
   mongo: z.union([z.boolean(), z.undefined()]),
   bundler: z.union([
     z.literal(false),
