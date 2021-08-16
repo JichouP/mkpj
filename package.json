@@ -1,6 +1,6 @@
 {
   "name": "mkpj",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/bin.js",
   "bin": {
@@ -15,7 +15,7 @@
     "link": "pnpm link --global",
     "unlink": "pnpm rm -g mkpj",
     "lint": "eslint src",
-    "test": "jest --color",
+    "test": "jest src/**/* --color",
     "test:coverage": "jest --collectCoverage --color",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install"
