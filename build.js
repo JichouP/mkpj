@@ -21,5 +21,4 @@ esbuild.build({
   platform: 'node',
   target: 'es2021',
   plugins: [copyPlugin],
-  sourcemap: true,
 });
