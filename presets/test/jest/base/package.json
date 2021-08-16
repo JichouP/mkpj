@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "test": "jest --color",
+    "test:coverage": "npm run test -- --collectCoverage",
+    "test:badge": "npm run test:coverage && jest-coverage-badges"
+  },
+  "jest": {
+    "coverageReporters": [
+      "json-summary",
+      "lcov"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "*",
+    "jest": "*",
+    "jest-coverage-badges": "*"
+  }
+}

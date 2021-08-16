@@ -9,4 +9,5 @@ prompt()
     const validationResult = promptValidator.parse(res);
     return processing(validationResult);
   })
-  .catch(console.error);
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  .catch(() => {});

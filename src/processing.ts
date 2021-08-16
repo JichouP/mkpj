@@ -3,12 +3,14 @@
 import { SpinnerHandler } from './spinner';
 import {
   copyFiles,
+  gitInit,
   isValidPM,
   mergePackageJSON,
   mergeTsConfigJSON,
   npmi,
   npmiD,
   npmInit,
+  npmCommand,
   savePackageJSON,
   saveTsConfigJSON,
 } from './utils/util';
@@ -21,9 +23,29 @@ export const processing = async (prompt: PromptResult): Promise<void> => {
   const { pm, preset, react, mongo, bundler, eslint, prettier, husky, test } =
     prompt;
 
+  // electron では esbuild のみ許可
+  if (preset === 'electron') {
+    if (bundler === 'webpack') {
+      console.error('Consider to use create-electron-app');
+      return;
+    }
+    if (bundler === 'ts-node') {
+      console.error("Can't use ts-node for electron");
+      return;
+    }
+  }
+
   // npm以外は存在確認
   spinner.setText(`Validate Package Manager: ${pm}`);
   await isValidPM(pm);
+
+  // git init
+  spinner.setText('Initializing git repository');
+  await gitInit();
+
+  // npm init
+  spinner.setText(`Initializing npm`);
+  await npmInit();
 
   // configを作成
   const config: [Mkpj.Preset, Mkpj.Type, Mkpj.Option][] = [
@@ -39,14 +61,17 @@ export const processing = async (prompt: PromptResult): Promise<void> => {
   if (test) config.push(['test', 'jest', preset]);
   if (test && mongo) config.push(['test', 'jest', 'mongo']);
 
+  // ファイルをコピー
+  spinner.setText(`Copy Files`);
+  await copyFiles(config);
+
   // すべてのpackage.jsonを合成
   const { dependencies, devDependencies, ...rest } = await mergePackageJSON(
     config
   );
 
   // package.jsonを保存
-  spinner.setText(`Save Package.json`);
-  await npmInit();
+  spinner.setText(`update package.json`);
   await savePackageJSON(rest);
 
   // npm install
@@ -69,8 +94,12 @@ export const processing = async (prompt: PromptResult): Promise<void> => {
     tsconfig.push(['typing', 'typescript', 'react']);
   await saveTsConfigJSON(await mergeTsConfigJSON(tsconfig));
 
-  // ファイルをコピー
-  spinner.setText(`Copy Files`);
-  await copyFiles(config);
+  // husky init
+  if (husky) {
+    spinner.setText(`Initializing git hooks`);
+    await npmCommand('npm', 'set-script prepare "husky install"');
+    await npmCommand('npm', 'run prepare');
+  }
+
   spinner.done();
 };

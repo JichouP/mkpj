@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "@types/webpack-node-externals": "*",
+    "babel-loader": "*",
+    "css-loader": "*",
+    "fork-ts-checker-webpack-plugin": "*",
+    "style-loader": "*",
+    "ts-loader": "*",
+    "webpack": "*",
+    "webpack-cli": "*",
+    "webpack-merge": "*",
+    "webpack-node-externals": "*"
+  }
+}

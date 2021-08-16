@@ -57,6 +57,16 @@ export const savePackageJSON = async (
   await writeFile(`${process.cwd()}/package.json`, json, 'utf8');
 };
 
+export const gitInit = async (): Promise<void> =>
+  new Promise((resolve, reject) => {
+    childProcess.exec(`git init`, (err) => {
+      if (err) {
+        reject(new Error(`git init failed`));
+      }
+      resolve();
+    });
+  });
+
 export const npmInit = (): Promise<void> =>
   new Promise((resolve, reject) => {
     childProcess.exec('npm init -y', (err) => {
@@ -73,7 +83,7 @@ export const npmi = async (
 ): Promise<void> =>
   new Promise((resolve, reject) => {
     childProcess.exec(
-      `${pm} i ${dependencies.join(' ')}`,
+      `${pm} ${pm === 'yarn' ? 'add' : 'i'} ${dependencies.join(' ')}`,
       {
         cwd: process.cwd(),
       },
@@ -93,7 +103,27 @@ export const npmiD = async (
 ): Promise<void> =>
   new Promise((resolve, reject) => {
     childProcess.exec(
-      `${pm}  i -D ${devDependencies.join(' ')}`,
+      `${pm} ${pm === 'yarn' ? 'add' : 'i'} -D ${devDependencies.join(' ')}`,
+      {
+        cwd: process.cwd(),
+      },
+      (err) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve();
+      }
+    );
+  });
+
+export const npmCommand = async (
+  pm: PromptResult['pm'],
+  cmd: string
+): Promise<void> =>
+  new Promise((resolve, reject) => {
+    childProcess.exec(
+      `${pm} ${cmd}`,
       {
         cwd: process.cwd(),
       },
