@@ -5,8 +5,9 @@ const fs = require('fs-extra');
 const copyPlugin = {
   name: 'copy',
   setup(build) {
-    build.onStart(() => {
-      fs.copy('presets', 'dist/presets', { recursive: true });
+    build.onStart(async () => {
+      await fs.rm('dist/presets', { recursive: true });
+      await fs.copy('presets', 'dist/presets', { recursive: true });
     });
   },
 };
