@@ -18,7 +18,7 @@ module.exports = {
     'import/resolver': {
       'babel-module': {
         alias: {
-          '@': 'src',
+          '@': './src',
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },

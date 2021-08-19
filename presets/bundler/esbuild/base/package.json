@@ -4,6 +4,7 @@
     "build": "node build.js"
   },
   "devDependencies": {
-    "esbuild": "*"
+    "esbuild": "*",
+    "fs-extra": "*"
   }
 }

@@ -60,8 +60,9 @@ const config: webpack.Configuration = {
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html'),
+      template: path.resolve(__dirname, 'public', 'index.html'),
       filename: 'index.html',
+      inject: false,
     }),
   ],
 };

@@ -20,6 +20,8 @@ export const isValidPM = async (pm: PromptResult['pm']): Promise<boolean> => {
   });
 };
 
+// package.json
+
 const parseOriginalPackageJSON = async (): Promise<Record<string, unknown>> =>
   JSON.parse(
     await readFile(`${process.cwd()}/package.json`, 'utf8').catch(() => '{}')
@@ -57,6 +59,66 @@ export const savePackageJSON = async (
   await writeFile(`${process.cwd()}/package.json`, json, 'utf8');
 };
 
+// tsconfig.json
+
+const parseTsConfigJSON = async (
+  preset: Mkpj.Preset,
+  type: Mkpj.Type,
+  option: Mkpj.Option
+): Promise<Record<string, unknown>> =>
+  JSON.parse(
+    await readFile(
+      `${__dirname}/presets/${preset}/${type}/${option}/tsconfig.json`,
+      'utf8'
+    ).catch(() => '{}')
+  ) as Record<string, unknown>;
+
+export const mergeTsConfigJSON = async (
+  config: [Mkpj.Preset, Mkpj.Type, Mkpj.Option][]
+): Promise<Record<string, unknown>> =>
+  deepmerge.all(
+    await Promise.all(config.map((v) => parseTsConfigJSON(...v)))
+  ) as Record<string, unknown>;
+
+export const saveTsConfigJSON = async (
+  obj: Record<string, unknown>
+): Promise<void> => {
+  const json = JSON.stringify(obj, null, 2);
+  await writeFile(`${process.cwd()}/tsconfig.json`, json, 'utf8');
+};
+
+// babel.config.json
+
+const parseBabelConfigJSON = async (
+  preset: Mkpj.Preset,
+  type: Mkpj.Type,
+  option: Mkpj.Option
+): Promise<Record<string, unknown>> =>
+  JSON.parse(
+    await readFile(
+      `${__dirname}/presets/${preset}/${type}/${option}/babel.config.json`,
+      'utf8'
+    ).catch(() => '{}')
+  ) as Record<string, unknown>;
+
+export const mergeBabelConfigJSON = async (
+  config: [Mkpj.Preset, Mkpj.Type, Mkpj.Option][]
+): Promise<Record<string, unknown>> =>
+  sort(
+    deepmerge.all(
+      await Promise.all(config.map((v) => parseBabelConfigJSON(...v)))
+    )
+  ) as Record<string, unknown>;
+
+export const saveBabelConfigJSON = async (
+  obj: Record<string, unknown>
+): Promise<void> => {
+  const json = JSON.stringify(obj, null, 2);
+  await writeFile(`${process.cwd()}/babel.config.json`, json, 'utf8');
+};
+
+// git init
+
 export const gitInit = async (): Promise<void> =>
   new Promise((resolve, reject) => {
     childProcess.exec(`git init`, (err) => {
@@ -67,6 +129,8 @@ export const gitInit = async (): Promise<void> =>
     });
   });
 
+// npm init
+
 export const npmInit = (): Promise<void> =>
   new Promise((resolve, reject) => {
     childProcess.exec('npm init -y', (err) => {
@@ -76,6 +140,8 @@ export const npmInit = (): Promise<void> =>
       resolve();
     });
   });
+
+// npm install
 
 export const npmi = async (
   pm: PromptResult['pm'],
@@ -96,6 +162,8 @@ export const npmi = async (
       }
     );
   });
+
+// npm install -D
 
 export const npmiD = async (
   pm: PromptResult['pm'],
@@ -137,32 +205,6 @@ export const npmCommand = async (
     );
   });
 
-const parseTsConfigJSON = async (
-  preset: Mkpj.Preset,
-  type: Mkpj.Type,
-  option: Mkpj.Option
-): Promise<Record<string, unknown>> =>
-  JSON.parse(
-    await readFile(
-      `${__dirname}/presets/${preset}/${type}/${option}/tsconfig.json`,
-      'utf8'
-    ).catch(() => '{}')
-  ) as Record<string, unknown>;
-
-export const mergeTsConfigJSON = async (
-  config: [Mkpj.Preset, Mkpj.Type, Mkpj.Option][]
-): Promise<Record<string, unknown>> =>
-  deepmerge.all(
-    await Promise.all(config.map((v) => parseTsConfigJSON(...v)))
-  ) as Record<string, unknown>;
-
-export const saveTsConfigJSON = async (
-  obj: Record<string, unknown>
-): Promise<void> => {
-  const json = JSON.stringify(obj, null, 2);
-  await writeFile(`${process.cwd()}/tsconfig.json`, json, 'utf8');
-};
-
 const copyFile = async (
   preset: Mkpj.Preset,
   type: Mkpj.Type,
@@ -191,4 +233,11 @@ export const copyFiles = async (
     // eslint-disable-next-line no-await-in-loop
     await copyFile(...v);
   }
+};
+
+export const copyGitIgnore = async (): Promise<void> => {
+  await copy(
+    `${__dirname}/presets/gitignore/.gitignore`,
+    `${process.cwd()}/.gitignore`
+  ).catch(console.error);
 };

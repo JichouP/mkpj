@@ -1,8 +1,8 @@
 import request from 'supertest';
-import app from '@/app';
+import main from '@/main';
 
 describe('integration user', () => {
   test('should 404', async () => {
-    await request(app).get('/').expect(404);
+    await request(main).get('/').expect(404);
   });
 });

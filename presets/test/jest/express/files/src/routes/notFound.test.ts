@@ -1,8 +1,8 @@
 import NotFound from './notFound';
-import { createRequestMock } from '@/utils/util';
+import { createRequestMock } from '@/utils/utils';
 
 describe('notfound', () => {
-  test('shuld get user list', async () => {
+  test('shuld get user list', () => {
     const { req, res, next } = createRequestMock();
 
     NotFound(req, res, next);

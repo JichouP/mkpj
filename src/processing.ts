@@ -13,6 +13,9 @@ import {
   npmCommand,
   savePackageJSON,
   saveTsConfigJSON,
+  saveBabelConfigJSON,
+  mergeBabelConfigJSON,
+  copyGitIgnore,
 } from './utils/util';
 import { PromptResult } from './zod';
 
@@ -55,15 +58,17 @@ export const processing = async (prompt: PromptResult): Promise<void> => {
   if (mongo) config.push(['main', 'mongo', 'base']);
   if (bundler)
     config.push(['bundler', bundler, 'base'], ['bundler', bundler, preset]);
-  if (eslint) config.push(['linter', 'eslint', eslint]);
+  if (eslint)
+    config.push(['linter', 'eslint', 'base'], ['linter', 'eslint', eslint]);
   if (prettier) config.push(['formatter', 'prettier', 'base']);
   if (husky) config.push(['git-hooks', 'husky', 'base']);
-  if (test) config.push(['test', 'jest', preset]);
+  if (test) config.push(['test', 'jest', 'base'], ['test', 'jest', preset]);
   if (test && mongo) config.push(['test', 'jest', 'mongo']);
 
   // ファイルをコピー
   spinner.setText(`Copy Files`);
   await copyFiles(config);
+  await copyGitIgnore();
 
   // すべてのpackage.jsonを合成
   const { dependencies, devDependencies, ...rest } = await mergePackageJSON(
@@ -71,7 +76,7 @@ export const processing = async (prompt: PromptResult): Promise<void> => {
   );
 
   // package.jsonを保存
-  spinner.setText(`update package.json`);
+  spinner.setText(`Update package.json`);
   await savePackageJSON(rest);
 
   // npm install
@@ -93,6 +98,10 @@ export const processing = async (prompt: PromptResult): Promise<void> => {
   if (preset === 'react' || react)
     tsconfig.push(['typing', 'typescript', 'react']);
   await saveTsConfigJSON(await mergeTsConfigJSON(tsconfig));
+
+  // babel.config.jsonを作成
+  spinner.setText(`Create babel.config.json`);
+  await saveBabelConfigJSON(await mergeBabelConfigJSON(config));
 
   // husky init
   if (husky) {

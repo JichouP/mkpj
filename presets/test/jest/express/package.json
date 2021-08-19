@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@types/sinon-express-mock": "*",
+    "@types/supertest": "*",
     "sinon": "*",
     "sinon-express-mock": "*",
     "supertest": "*"

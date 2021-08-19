@@ -1,9 +1,14 @@
 {
+  "scripts": {
+    "build:dev": "webpack --config webpack.dev.ts",
+    "build:prod": "webpack --config webpack.prod.ts"
+  },
   "devDependencies": {
     "@types/webpack-node-externals": "*",
     "babel-loader": "*",
     "fork-ts-checker-webpack-plugin": "*",
     "ts-loader": "*",
+    "ts-node": "*",
     "webpack": "*",
     "webpack-cli": "*",
     "webpack-merge": "*",

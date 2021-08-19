@@ -2,5 +2,9 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "electron dist/main.js"
+  },
+  "dependencies": {
+    "electron": "*",
+    "electron-squirrel-startup": "*"
   }
 }

@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@types/jest": "*",
+    "babel-jest": "*",
     "jest": "*",
     "jest-coverage-badges": "*"
   }
