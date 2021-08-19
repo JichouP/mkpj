@@ -1,6 +1,6 @@
 {
   "name": "mkpj",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/bin.js",
   "bin": {
@@ -17,7 +17,6 @@
     "lint": "eslint src",
     "test": "jest src/**/* --color",
     "test:coverage": "jest --collectCoverage --color",
-    "preinstall": "npx only-allow pnpm",
     "prepare": "husky install"
   },
   "repository": {
