@@ -37,6 +37,7 @@
     "chalk": "^4.1.2",
     "cli-color": "^2.0.0",
     "cli-spinners": "^2.6.0",
+    "commander": "^8.1.0",
     "deepmerge": "^4.2.2",
     "esbuild": "^0.12.20",
     "prompts": "^2.4.1",
