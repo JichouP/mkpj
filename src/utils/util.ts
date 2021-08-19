@@ -237,7 +237,7 @@ export const copyFiles = async (
 
 export const copyGitIgnore = async (): Promise<void> => {
   await copy(
-    `${__dirname}/presets/gitignore/.gitignore`,
+    `${__dirname}/presets/gitignore/gitignore`,
     `${process.cwd()}/.gitignore`
   ).catch(console.error);
 };
