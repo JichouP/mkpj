@@ -107,8 +107,8 @@ devDependencies:
     specifier: ^16.2.7
     version: 16.2.7
   prettier:
-    specifier: ^2.3.2
-    version: 2.3.2
+    specifier: ^3.7.4
+    version: 3.7.4
   ts-node:
     specifier: ^10.2.0
     version: 10.2.0(@types/node@25.0.4)(typescript@5.9.3)
@@ -5106,7 +5106,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.6
+      graceful-fs: 4.2.11
     dev: true
 
   /jsx-ast-utils@3.3.5:
@@ -5641,9 +5641,9 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier@2.3.2:
-    resolution: {integrity: sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==}
-    engines: {node: '>=10.13.0'}
+  /prettier@3.7.4:
+    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
