@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.0.4
     version: 2.0.4
   cli-spinners:
-    specifier: ^2.6.0
-    version: 2.6.0
+    specifier: ^3.3.0
+    version: 3.3.0
   commander:
     specifier: ^14.0.2
     version: 14.0.2
@@ -2987,9 +2987,9 @@ packages:
       restore-cursor: 5.1.0
     dev: true
 
-  /cli-spinners@2.6.0:
-    resolution: {integrity: sha512-t+4/y50K/+4xcCRosKkA7W4gTr1MySvLV0q+PxmG7FJ5g+66ChKurYjxBCjHggHH3HA5Hh9cy+lcUGWDqVH+4Q==}
-    engines: {node: '>=6'}
+  /cli-spinners@3.3.0:
+    resolution: {integrity: sha512-/+40ljC3ONVnYIttjMWrlL51nItDAbBrq2upN8BPyvGU/2n5Oxw3tbNwORCaNuNqLJnxGqOfjUuhsv7l5Q4IsQ==}
+    engines: {node: '>=18.20'}
     dev: false
 
   /cli-truncate@5.1.1:
