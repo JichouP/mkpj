@@ -15,8 +15,8 @@ dependencies:
     specifier: ^2.6.0
     version: 2.6.0
   commander:
-    specifier: ^8.1.0
-    version: 8.1.0
+    specifier: ^14.0.2
+    version: 14.0.2
   deepmerge:
     specifier: ^4.2.2
     version: 4.2.2
@@ -3037,12 +3037,6 @@ packages:
   /commander@14.0.2:
     resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
     engines: {node: '>=20'}
-    dev: true
-
-  /commander@8.1.0:
-    resolution: {integrity: sha512-mf45ldcuHSYShkplHHGKWb4TrmwQadxOn7v4WuhDJy0ZVoY5JFajaRDKD0PNe5qXzBX0rhovjTnP6Kz9LETcuA==}
-    engines: {node: '>= 12'}
-    dev: false
 
   /concat-map@0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
@@ -5106,7 +5100,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.6
+      graceful-fs: 4.2.11
     dev: true
 
   /jsx-ast-utils@3.3.5:
