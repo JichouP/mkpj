@@ -34,7 +34,7 @@ const parsePackageJSON = async (
 ): Promise<Record<string, unknown>> =>
   JSON.parse(
     await readFile(
-      `${__dirname}/presets/${preset}/${type}/${option}/package.json`,
+      `${__dirname}/presets/${preset}/${type}/${option}/_package.json`,
       'utf8'
     ).catch(() => '{}')
   ) as Record<string, unknown>;
