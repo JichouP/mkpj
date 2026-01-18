@@ -13,7 +13,7 @@ dependencies:
     version: 2.0.4
   cli-spinners:
     specifier: ^3.3.0
-    version: 3.3.0
+    version: 3.4.0
   commander:
     specifier: ^14.0.2
     version: 14.0.2
@@ -108,7 +108,7 @@ devDependencies:
     version: 16.2.7
   prettier:
     specifier: ^3.7.4
-    version: 3.7.4
+    version: 3.8.0
   ts-node:
     specifier: ^10.2.0
     version: 10.9.2(@types/node@25.0.9)(typescript@5.9.3)
@@ -2994,8 +2994,8 @@ packages:
       restore-cursor: 5.1.0
     dev: true
 
-  /cli-spinners@3.3.0:
-    resolution: {integrity: sha512-/+40ljC3ONVnYIttjMWrlL51nItDAbBrq2upN8BPyvGU/2n5Oxw3tbNwORCaNuNqLJnxGqOfjUuhsv7l5Q4IsQ==}
+  /cli-spinners@3.4.0:
+    resolution: {integrity: sha512-bXfOC4QcT1tKXGorxL3wbJm6XJPDqEnij2gQ2m7ESQuE+/z9YFIWnl/5RpTiKWbMq3EVKR4fRLJGn6DVfu0mpw==}
     engines: {node: '>=18.20'}
     dev: false
 
@@ -5604,8 +5604,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier@3.7.4:
-    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
+  /prettier@3.8.0:
+    resolution: {integrity: sha512-yEPsovQfpxYfgWNhCfECjG5AQaO+K3dp6XERmOepyPDVqcJm+bjyCVO3pmU+nAPe0N5dDvekfGezt/EIiRe1TA==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
